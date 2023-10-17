@@ -23,6 +23,8 @@ option2 = streamlit.selectbox(
 
 streamlit.write('You selected:', option2)
 
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
 #my_cur.execute("select price from catalog_for_website where color_or_style = '" + option2 + "'" )
 my_cur.execute("select price from catalog_for_website where color_or_style = 'Burgundy'" )
 price = my_cur.fetch()
