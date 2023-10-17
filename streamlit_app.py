@@ -19,6 +19,11 @@ my_data_rows = my_cur.fetchall()
 my_cnx.close()
 
 option2 = streamlit.selectbox(
-    'How would you like to be contacted?', my_data_rows)
+    'Pick a sweatsuit color or style:', my_data_rows)
 
 streamlit.write('You selected:', option2)
+
+my_cur.execute("select price from catalog_for_website where color_or_style = '" + option2 + "'" )
+price = my_cur.fetch()
+my_cnx.close()
+streamlit.write('Price:', price)
