@@ -30,3 +30,6 @@ my_cur.execute("select price from catalog_for_website where color_or_style = 'Bu
 price = my_cur.fetchall()
 my_cnx.close()
 streamlit.write('Price:', price)
+
+price_normalized = pandas.json_normalize(price.json())
+streamlit.write('Price:', price_normalized)
